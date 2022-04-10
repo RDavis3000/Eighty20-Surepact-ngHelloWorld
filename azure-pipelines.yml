@@ -4,33 +4,33 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- dev/*
+  - dev/*
 
 pool:
   vmImage: ubuntu-latest
 
   stages:
-  - stage: 'BuildTest'
-    displayName: 'Build & Test'
+    - stage: "BuildTest"
+      displayName: "Build & Test xxxxx"
 
-  jobs:
+  jobs: 
     job:'buildjob'
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '>=16.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: ">=16.x"
+    displayName: "Install Node.js"
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
+  - script: |
+      npm install -g @angular/cli
+      npm install
+      ng build --prod
+    displayName: "npm install and build"
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'This one'
-    appType: 'webApp'
-    WebAppName: 'webAppwebservice-core-richarddev-australiaeast'
-    packageForLinux: '$(System.DefaultWorkingDirectory)'
+  - task: AzureRmWebAppDeployment@4
+    inputs:
+      ConnectionType: "AzureRM"
+      azureSubscription: "This one"
+      appType: "webApp"
+      WebAppName: "webAppwebservice-core-richarddev-australiaeast"
+      packageForLinux: "$(System.DefaultWorkingDirectory)"
