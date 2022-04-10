@@ -10,7 +10,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo "name is $(Build.BuildNumber)"
+- task: CmdLine@2
+  inputs:
+    script: 'echo Hello world'
 - task: NodeTool@0
   inputs:
     versionSpec: '>=14.0.0'
