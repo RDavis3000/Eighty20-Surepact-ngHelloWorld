@@ -9,10 +9,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+  stages:
+  - stage: 'BuildTest'
+    displayName: 'Build & Test'
+
+  jobs:
+    job:'buildjob'
 steps:
-- task: CmdLine@2
-  inputs:
-    script: 'echo Hello world'
 - task: NodeTool@0
   inputs:
     versionSpec: '>=16.x'
@@ -30,4 +33,4 @@ steps:
     azureSubscription: 'testsc1'
     appType: 'webApp'
     WebAppName: 'webAppwebservice-core-richarddev-australiaeast'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)'
