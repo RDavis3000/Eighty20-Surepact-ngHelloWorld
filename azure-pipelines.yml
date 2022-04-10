@@ -10,10 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: CmdLine@2
+  inputs:
+    script: 'echo Hello world'
 - task: NodeTool@0
   inputs:
     versionSpec: '>=16.x'
-  displayName: 'Install aaaaa Node.js'
+  displayName: 'Install Node.js'
 
 - script: |
     npm install -g @angular/cli
