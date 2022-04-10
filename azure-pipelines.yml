@@ -23,3 +23,11 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'testsc1'
+    appType: 'webApp'
+    WebAppName: 'webAppwebservice-core-richarddev-australiaeast'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
